@@ -11,6 +11,13 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, public dataservice: DataService) { }
 
+  signUp() {
+    this.router.navigate(['signup']);
+  }
+  logIn() {
+    this.router.navigate(['login']);
+  }
+
   ngOnInit() {
   }
 

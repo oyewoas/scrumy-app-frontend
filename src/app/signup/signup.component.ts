@@ -21,7 +21,12 @@ export class SignupComponent implements OnInit {
   ];
   constructor(private router: Router, public dataservice: DataService) { }
   
-
+  signUp() {
+    this.router.navigate(['signup']);
+  }
+  logIn() {
+    this.router.navigate(['login']);
+  }
   ngOnInit() {
 
     this.dataservice.usertypes = this.usertypes;
