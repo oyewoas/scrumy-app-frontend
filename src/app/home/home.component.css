@@ -1,0 +1,16 @@
+nav{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+header{
+    padding-top: 50px;
+}
+
+.nav-btn{
+    color: #4a14ac;
+    background-color: white;
+    border-radius: 30px;
+   padding: 0px 20px;
+    border: 1px solid #4a14ac;
+}
