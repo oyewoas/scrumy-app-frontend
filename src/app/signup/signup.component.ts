@@ -9,21 +9,22 @@ import { DataService } from '../data.service';
 })
 
 export class SignupComponent implements OnInit {
+  usertypes = [
+    {
+      value: 'owner',
+      types: 'Owner'
+    },
+    {
+      value: 'user',
+      types: 'User'
+    }
+  ];
   constructor(private router: Router, public dataservice: DataService) { }
   
 
   ngOnInit() {
 
-    this.dataservice.usertypes = [
-      {
-        value: 'owner',
-        types: 'Owner'
-      },
-      {
-        value: 'user',
-        types: 'User'
-      }
-    ];
+    this.dataservice.usertypes = this.usertypes;
   }
 
 }

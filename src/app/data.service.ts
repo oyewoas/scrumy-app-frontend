@@ -15,7 +15,7 @@ export class DataService {
     public signuppwd: string;
     public signupconfpwd: string;
     public fullname: string;
-    public usertypes: object;
+    public usertypes: any[];
     public loginusername: string;
     public loginpwd: string;
 
