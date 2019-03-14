@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <nav class=" center">
+        <a routerLink="/home" routerLinkActive="active">Home</a> &nbsp; &nbsp;
+        <a routerLink="/signup" routerLinkActive="active">Sign Up</a>
+
+    </nav>
+</div>
+
+<div class="container">
+  <div>
+    <div class="row">
+      <div class="col s2"></div>
+      <form class="col s8">
+        <div class="center">
+        <h5>Login User Form</h5>
+
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <label for="username">Username</label>
+            <input placeholder="Username" name="loginusername" [ngModelOptions]="{standalone: true}" [(ngModel)]="dataservice.loginusername" id="loginusername" type="text" class="input-field validate">
+            <p>Hi {{dataservice.loginusername}}</p>
+          </div>
+          
+          <div class=" col s12">
+            <label for="password">Password</label>
+            <input id="loginpassword" name="loginpwd" [ngModelOptions]="{standalone: true}" [(ngModel)]="dataservice.loginpwd" placeholder="Password" type="password" class="input-field validate">
+          </div>
+          <div class=" col s12">
+              <button class="waves-effect waves-light btn">Login</button>
+          </div>
+        </div>
+      </form>
+      <div class="col s2"></div>
+
+    </div>
+    
+  </div>

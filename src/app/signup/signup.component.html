@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <nav class=" center">
+        <a routerLink="/home" routerLinkActive="active">Home</a> &nbsp; &nbsp;
+        <a routerLink="/login" routerLinkActive="active">Log In</a>
+    </nav>
+</div>
+  <div class="container">
+    <div class="row">
+      <div class="col s2"></div>
+      <form class="col s8">
+          <div class="center">
+              <h5>Create User Form</h5>
+      
+              </div>
+        <div class="row">
+          <div class="col s12">
+            <label for="username">Username</label>
+            <input placeholder="Username" name="signupusername" [ngModelOptions]="{standalone: true}" [(ngModel)]="dataservice.signupusername" id="signupusername" type="text" class="input-field validate">
+            <p>Hi {{dataservice.signupusername}}</p>
+  
+          </div> <br>
+          <div class=" col s12">
+            <label for="password">Password</label>
+            <input id="signuppassword" name="signuppwd" [ngModelOptions]="{standalone: true}" [(ngModel)]="dataservice.signuppwd" placeholder="Password" type="password" class="input-field validate">
+          </div>
+          <div class=" col s12">
+            <label for="comfirm-password">Comfirm-Password</label>
+            <input id="comfirm-password" name="signupconfpwd" [ngModelOptions]="{standalone: true}" [(ngModel)]="dataservice.signupconfpwd" placeholder="Comfirm Password" type="password" class="input-field validate">
+          </div>
+          <div class=" col s12">
+            <label for="fullname">Full Name</label>
+            <input id="fullname" type="text" name="fullname" [ngModelOptions]="{standalone: true}" [(ngModel)]="dataservice.fullname" placeholder="Firstname Lastname"  class="input-field validate">
+          </div>
+          <div class=" col s12">
+              <label>User-type <i>(Choose your option)</i></label>
+              <select class="input-field browser-default" name="usertype" [ngModelOptions]="{standalone: true}" [(ngModel)]="dataservice.usertypes">
+                <!-- <option  value="" disabled [selected]="selected">Choose your option</option> -->
+                <option *ngFor="let usertype of usertypes" [value]="usertype.value">{{usertype.types}}</option>
+              </select>
+            
+            </div>
+            <div class=" col s12">
+                <button class="waves-effect waves-light btn">SignUp</button>
+            </div>
+        </div>
+      </form>
+  </div>
+  </div>
