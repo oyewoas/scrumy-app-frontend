@@ -20,7 +20,7 @@ export class DataService {
     public loginpwd: string;
 
     public httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
+      headers: new HttpHeaders({'Content-Type': 'application/json' })
     };
 
   constructor(
@@ -29,7 +29,7 @@ export class DataService {
 
   createUser() {
     // tslint:disable-next-line:max-line-length
-    this.http.post('http://' + this.domainname + '/scrum/api/scrumusers/', JSON.stringify({'password': this.signuppwd, 'confirmpassword': this.signupconfpwd, 'fullname': this.fullname, 'usertype': this.usertypes}), this.httpOptions).subscribe(
+    this.http.post('http://' + this.domainname + '/ayooluwaoyewoscrumy/api/v1/users/', JSON.stringify({username: this.sigupusername, password: this.signuppwd, confirmpassword: this.signupconfpwd, fullname: this.fullname, usertype: this.usertypes}), this.httpOptions).subscribe(
         data => {
             this.message = data['message'];
             this.sigupusername = '';
@@ -49,5 +49,9 @@ export class DataService {
         }
     );
   }
+
+ 
+
+
   }
 

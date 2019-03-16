@@ -27,9 +27,16 @@ export class SignupComponent implements OnInit {
   logIn() {
     this.router.navigate(['login']);
   }
+  
+  createUser(){
+    this.dataservice.createUser();
+  }
+
   ngOnInit() {
 
     this.dataservice.usertypes = this.usertypes;
   }
+
+  
 
 }
