@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Scrumboard</title>
+</head>
+<body>
+  <h4>{{dataservice.message}}</h4>
+  
+  <p >{{dataservice.username}} - {{dataservice.usertype}}</p>
+  <br />
+    Token Expires: {{ dataservice.token_expires }}<br />
+  <button (click)="logout()" >Logout</button>
+  
+  
+  <table >
+    <tr style="text-transform:uppercase">
+      <td>Weekly Goals</td>
+      <td>Daily Target</td>
+      <td>Verify Goals</td>
+      <td>Done Goals</td>
+      <td>Remove Goals</td>
+
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <form>
+    <p>Goal Name</p>
+    <input>
+    <p>Goal ID</p>
+    <input>
+    <p>Goal Status</p>
+    <select>
+      <option></option>
+    </select><br>
+    <input type="button" value="add">
+  </form>
+</body>
+</html>
+

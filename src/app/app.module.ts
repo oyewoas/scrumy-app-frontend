@@ -12,6 +12,7 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { DataService } from './data.service';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { ScrumboardComponent } from './scrumboard/scrumboard.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    ScrumboardComponent
   ],
   imports: [
     BrowserModule,

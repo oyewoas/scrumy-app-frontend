@@ -18,6 +18,16 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
+  toLogin(){
+    this.dataservice.toLogin();
+  }
+
+  refreshToken() {
+    this.dataservice.refreshToken();
+  }
+  logout() {
+    this.dataservice.logout();
+  }
   ngOnInit() {
   }
 
