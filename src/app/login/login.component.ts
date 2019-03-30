@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   toLogin(){
     this.dataservice.toLogin();
+
   }
 
   logout() {
@@ -27,5 +28,6 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit() {
   }
+
 
 }

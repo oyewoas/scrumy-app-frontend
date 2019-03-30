@@ -9,16 +9,7 @@ import { DataService } from '../data.service';
 })
 
 export class SignupComponent implements OnInit {
-  role = [
-    {
-      value: 'owner',
-      types: 'Owner'
-    },
-    {
-      value: 'user',
-      types: 'User'
-    }
-  ];
+  
   constructor(private router: Router, public dataservice: DataService) { }
   
   signUp() {
@@ -35,7 +26,6 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
 
-    this.dataservice.role = this.role;
   }
 
   

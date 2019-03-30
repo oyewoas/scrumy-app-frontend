@@ -27,6 +27,7 @@
       <div class="col l6 m6 s12 form">
       <form class="" (ngSubmit)="createUser()" #myform="ngForm">
           <div class="center">
+              <span>{{dataservice.message}}</span>
               <h4 class="heading-4">Create Account</h4>
               </div>
         <div class="row">
@@ -49,8 +50,8 @@
           <div class=" col s12">
               <label>User-type <i>(Choose your option)</i></label>
               <select class="input-field browser-default" name="role" [ngModelOptions]="{standalone: true}" [(ngModel)]="dataservice.role">
-                <!-- <option  value="" disabled [selected]="selected">Choose your option</option> -->
-                <option *ngFor="let role of role" [value]="role.value">{{role.types}}</option>
+                <option value="Owner">Owner</option>
+                <option value="User">User</option>
               </select>
             
             </div>
