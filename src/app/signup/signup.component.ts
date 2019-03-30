@@ -9,7 +9,7 @@ import { DataService } from '../data.service';
 })
 
 export class SignupComponent implements OnInit {
-  usertypes = [
+  role = [
     {
       value: 'owner',
       types: 'Owner'
@@ -30,11 +30,12 @@ export class SignupComponent implements OnInit {
   
   createUser(){
     this.dataservice.createUser();
+    this.dataservice.message = 'User Created Successfully';
   }
 
   ngOnInit() {
 
-    this.dataservice.usertypes = this.usertypes;
+    this.dataservice.role = this.role;
   }
 
   

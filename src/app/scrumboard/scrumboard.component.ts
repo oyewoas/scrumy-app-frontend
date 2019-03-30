@@ -14,7 +14,7 @@ export class ScrumboardComponent implements OnInit {
   constructor(private router: Router,private dataservice: DataService) { 
    
     this.dataservice.username = sessionStorage.getItem('username');
-    this.dataservice.usertype = sessionStorage.getItem('usertype');
+    this.dataservice.roles = sessionStorage.getItem('role');
    
   }
 

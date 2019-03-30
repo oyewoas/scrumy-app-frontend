@@ -22,9 +22,6 @@ export class LoginComponent implements OnInit {
     this.dataservice.toLogin();
   }
 
-  refreshToken() {
-    this.dataservice.refreshToken();
-  }
   logout() {
     this.dataservice.logout();
   }

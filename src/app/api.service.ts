@@ -13,12 +13,12 @@ export class ApiService {
   public loginemail;
 
   public username;
-  public Email;
+  public email;
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   generateToken(userData){
-  return this.httpClient.post(`${this.API_URL}/api/v1/scrumuser/`, userData);
+  return this.httpClient.post(`${this.API_URL}/api/v1/rest-auth/login/`, userData);
   
   }
 
