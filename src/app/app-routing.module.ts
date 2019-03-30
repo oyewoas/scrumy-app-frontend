@@ -5,6 +5,8 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ScrumboardComponent } from './scrumboard/scrumboard.component';
+import { DragulaModule } from 'ng2-dragula';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,7 +19,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), DragulaModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

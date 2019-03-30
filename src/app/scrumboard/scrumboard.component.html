@@ -43,10 +43,10 @@
         
      </div>
      <ng-container *ngFor="let user of dataservice.users">
-       <div class="table-row" *ngFor="let goal of user.scrumygoals_set; let j = index; let k= count">
-         <td *ngIf="j == 0" colspan="1" [attr.rowspan]="k" class="full-box">{{user.nickname}}</td>
-         <div colspan="1" *ngFor="let arrItem of arrCount" [ngClass]="j == 0 ? 'top-box' : 'reg-box'" [innerText]="goal.goal_status == arrItem ? goal.goal_id + ') ' + goal.goal_name: '-----'"></div>
-         <div colspan="1" [ngClass] = "j == 0 ? 'top-box' : 'reg-box'">-----</div>
+       <div class="table-row" *ngFor="let goal of user.scrumygoals_set; let j = index; let k= count" dragula="mainTable">
+         <td *ngIf="j == 0" colspan="1" [attr.rowspan]="k" class="full-box" id="user">{{user.nickname}}</td>
+         <div colspan="1" *ngFor="let arrItem of arrCount" [ngClass]="j == 0 ? 'top-box' : 'reg-box'" [innerText]="goal.goal_status == arrItem ? goal.goal_id + ') ' + goal.goal_name: '-----'" [attr.id]="goal.goal_status == arrItem ? arrItem : 'blank'"></div>
+         <div colspan="1" [ngClass] = "j == 0 ? 'top-box' : 'reg-box'" id="6">-----</div>
 
        </div>
      </ng-container>

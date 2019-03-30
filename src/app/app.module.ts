@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { DataService } from './data.service';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ScrumboardComponent } from './scrumboard/scrumboard.component';
+import { DragulaModule } from 'ng2-dragula';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ScrumboardComponent } from './scrumboard/scrumboard.component';
     MzInputModule,
     HttpClientModule,
     MzSelectModule,
+    DragulaModule.forRoot()
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
