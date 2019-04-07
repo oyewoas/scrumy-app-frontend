@@ -31,7 +31,7 @@
     <div class="col l12 s12 m12">
      <div class="table">
        <div class="table-row">
-         <th colspan="6" class="full-box">Available Goals</th>
+         <th colspan="6" class="full-box">Available Tasks</th>
        </div>
        <div class="table-row">
           <th class="full-box"> User</th>
@@ -43,10 +43,14 @@
         
      </div>
      <ng-container *ngFor="let user of dataservice.users">
-       <div class="table-row" *ngFor="let goal of user.scrumygoals_set; let j = index; let k= count" dragula="mainTable">
+       <div *ngIf="user.scrumygoals_set.length == 0" class="table-row" dragula="mainTable" [attr.id]="'u' + user.id">
+          <td class="full-box" id="author" colspan="6">{{user.nickname}} - NO TASK FOR THIS USER</td>
+       </div>
+       <div class="table-row" *ngFor="let goal of user.scrumygoals_set; let j = index; let k= count" dragula="mainTable" [attr.id]= "goal.goal_id">
          <td *ngIf="j == 0" colspan="1" [attr.rowspan]="k" class="full-box" id="user">{{user.nickname}}</td>
-         <div colspan="1" *ngFor="let arrItem of arrCount" [ngClass]="j == 0 ? 'top-box' : 'reg-box'" [innerText]="goal.goal_status == arrItem ? goal.goal_id + ') ' + goal.goal_name: '-----'" [attr.id]="goal.goal_status == arrItem ? arrItem : 'blank'"></div>
-         <div colspan="1" [ngClass] = "j == 0 ? 'top-box' : 'reg-box'" id="6">-----</div>
+         <div colspan="1" *ngFor="let arrItem of arrCount" [ngClass]="j == 0 ? 'top-box' : 'reg-box'" [innerText]="goal.goal_status == arrItem ? goal.goal_id + ') ' + goal.goal_name: '-----'" [attr.id]="goal.goal_status == arrItem ? arrItem : 'blank'"
+         (click) = "goal.goal_status == arrItem ? editGoal($event) : doNothing()"></div>
+         <div colspan="1" [ngClass] = "j == 0 ? 'top-box' : 'reg-box'" id="remove" >-----</div>
 
        </div>
      </ng-container>
@@ -58,9 +62,9 @@
     <div class="col s12 l4 m3"></div>
     <div class="col s12 l4 m6 center">
         <form (ngSubmit)="addGoal()" class="addgoal-form">
-            <label> <h4 class="headin-4">Goal Name</h4> </label>
-            <input class="add-btn" type="submit" id="goalname" name="goalname" [ngModelOptions]="{standalone: true}" [(ngModel)]="dataservice.goal_name" placeholder="Add Your Goal" type="text" class="input-field validate">
-        <button class="add-btn" >Add Goal</button>
+            <label> <h4 class="headin-4">Add Task</h4> </label>
+            <textarea rows="4" cols="35"  class="add-btn" id="goalname" name="goalname" [ngModelOptions]="{standalone: true}" [(ngModel)]="dataservice.goal_name" placeholder="Add Your Goal" class="input-field validate"></textarea>
+        <button class="add-btn" >Add Task</button>
 
         </form>
     </div>

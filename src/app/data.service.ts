@@ -20,13 +20,15 @@ export class DataService {
     public role: string;
     public loginusername: string;
     public username: string;
-    public password: string;
     public loginpwd: string;
     public firstname: string;
     public roleid;
     public roles;
     public users;
     public goal_name;
+    public goal_id;
+    public to_id;
+
     // the actual JWT token
     public token: string;
   // the token expiration date
@@ -74,41 +76,35 @@ export class DataService {
 
   toLogin()
   {
-    this.http.post('http://' + this.domainname + '/ayooluwaoyewoscrumy/api/v1/user/', JSON.stringify({username: this.loginusername,
+    this.http.post('http://' + this.domainname + '/ayooluwaoyewoscrumy/api-token-auth/', JSON.stringify({username: this.loginusername,
     password: this.loginpwd }), this.httpOptions).subscribe(
         data => {
-            if (data['exit'] === 0) {
+
             sessionStorage.setItem('username', this.loginusername);
-            sessionStorage.setItem('password', this.loginpwd);
             sessionStorage.setItem('role', data['role']);
+            sessionStorage.setItem('token', data['token']);
             sessionStorage.setItem('message', data['message']);
             this.username = this.loginusername;
-            this.password = this.loginpwd;
             this.role = data['role'];
             this.roleid = data['id'];
             this.fullname = data['nickname'];
             this.users = data['data'];
-            this.role = data['role'];
             this.router.navigate(['scrumboard']);
-          } else {
-            this.username = '';
-            this.password = '';
-          }
             this.loginusername = '';
             this.loginpwd = '';
-            this.username = '';
-            this.password = '';
             this.message = data['message'];
 
             console.log(data);
+
+            this.authOptions = {
+              headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization': 'JWT' + data['token'] })
+            };
         },
         err => {
-            if(err['status'] == 400) {
+            if(err['status'] == 400) 
               this.message = 'Login Failed: Invalid Credentials.';
-
-            } else {
+            else
               this.message = 'Login Failed! Unexpected Error!';
-            }
             console.error(err);
             this.loginusername = '';
             this.loginpwd = '';
@@ -118,42 +114,86 @@ export class DataService {
 
 addGoal()
 {this.http.post('http://' + this.domainname + '/ayooluwaoyewoscrumy/api/v1/scrumgoal/',
-  JSON.stringify({username: this.username,
-  password: this.password, goal_name: this.goal_name  }), this.httpOptions).subscribe(
+  JSON.stringify({
+  goal_name: this.goal_name  }), this.authOptions).subscribe(
       data => {
-        if (data['exit'] === 0) 
-              this.users = data['data'];
+          this.users = data['data'];
           this.message = data['message'];
           this.goal_name = '';
-          
-          
-        
       },
 
       err => {
         console.error(err);
-        this.message = 'Unexpected Error!';
         this.goal_name = '';
-
+        if (err['status']== 401){
+          this.message = 'Session Invalid or Expired, Please Login';
+          this.logout()
+        } else {
+          this.message = 'Unexpected Error!';
+        }
       },
     );
 
   }
 
+
+moveGoal(goal_id, to_id) {
+  this.http.patch('http://' + this.domainname + '/ayooluwaoyewoscrumy/api/v1/scrumgoal/',
+  JSON.stringify({ goal_id, to_id }), this.authOptions).subscribe(
+      data => {
+
+          this.users = data['data'];
+          this.message = data['message']
+      },
+
+      err => {
+        console.error(err);
+        if (err['status']== 401){
+          this.message = 'Session Invalid or Expired, Please Login';
+          this.logout()
+        } else {
+          this.message = 'Unexpected Error!';
+        }
+
+      },
+    );
+}
+
+changeOwner(from_id, to_id){
+  this.http.put('http://' + this.domainname + '/ayooluwaoyewoscrumy/api/v1/scrumgoal/',
+  JSON.stringify({mode: 0, from_id, to_id }), this.authOptions).subscribe(
+      data => {
+          this.users = data['data'];
+          this.message = data['message'];
+
+      },
+
+      err => {
+
+        console.error(err);
+        if (err['status'] == 401){
+          this.message = 'Session Invalid or Expired, Please Login';
+          this.logout()
+        } else {
+          this.message = 'Unexpected Error!';
+        }
+
+
+      },
+    );
+}
   logout()
   {
     this.username = '';
     this.roles = '';
-    this.roleid = '';
     this.users = [];
     this.fullname = '';
     this.router.navigate(['login']);
     this.authOptions = {};
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('role');
-    sessionStorage.removeItem('role_id');
     sessionStorage.removeItem('token');
-    sessionStorage.removeItem('fullname');
+
   }
 
 }

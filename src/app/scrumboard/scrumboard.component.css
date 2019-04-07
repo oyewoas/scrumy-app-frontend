@@ -13,6 +13,7 @@
 .top-box{
     display: table-cell;
     vertical-align: middle;
+    font-size: 14px;
     text-align: center;
     border: 1px solid gray;
     padding: 10px
@@ -29,6 +30,7 @@
 .reg-box{
     display: table-cell;
     vertical-align: middle;
+    font-size: 14px;
     text-align: center;
     border: 1px solid gray;
     padding: 10px
