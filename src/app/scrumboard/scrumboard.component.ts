@@ -94,8 +94,8 @@ export class ScrumboardComponent implements OnInit {
       this.http.put('http://' + this.dataservice.domainname + '/ayooluwaoyewoscrumy/api/v1/scrumgoal/',
         JSON.stringify({mode: 1, goal_id: items[0], new_name: goal_name }), this.dataservice.authOptions).subscribe(
             data => {
-                this.dataservice.users = data.data;
-                this.dataservice.message = data.message;
+                this.dataservice.users = data['data'];
+                this.dataservice.message = data['message'] ;
 
             },
 
@@ -104,7 +104,7 @@ export class ScrumboardComponent implements OnInit {
               console.error(err);
               if (err.status === 401) {
                 this.dataservice.message = 'Session Invalid or Expired, Please Login';
-                this.logout();
+                this.dataservice.logout();
               } else {
                 this.dataservice.message = 'Unexpected Error!';
               }
