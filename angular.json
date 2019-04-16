@@ -28,6 +28,7 @@
               "node_modules/@mdi/font/css/materialdesignicons.min.css"
             ],
             "scripts": [
+              ".node_modules/hammerjs/hammer.min.js",
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/materialize-css/dist/js/materialize.min.js"
             ],

@@ -21,6 +21,8 @@ export class ScrumboardComponent implements OnInit {
     this.dataservice.username = sessionStorage.getItem('username');
     this.dataservice.roles = sessionStorage.getItem('role');
     this.dataservice.message = sessionStorage.getItem('message');
+    this.dataservice.project_name = sessionStorage.getItem('project_name');
+
 
     this.dataservice.authOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization': 'JWT ' + sessionStorage.getItem('token')})

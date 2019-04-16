@@ -4,7 +4,7 @@
     <nav class="purple darken-4">
       <div class="nav-wrapper">
         <a routerLink="/home" routerLinkActive="active" class="brand-logo">Scrumy App</a>
-        <a href="" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <a href="" materialize="sideNav"  data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a routerLink="/home" routerLinkActive="active">HOME</a></li>
           <li><a routerLink="/home" routerLinkActive="active">ABOUT</a></li>
@@ -23,14 +23,16 @@
       <li><a href="mobile.html">Mobile</a></li>
     </ul>
   </div>
-
+  
   <header class="header">
       <div class="row">
             <div class="col s6">
                 <h1 class="heading-1">Team Task Management made easy.</h1>
                 <p class="paragraph">Scrumy app helps members of a team to manage their tasks 
                     and get approval from their supervisor when tasks are completed. </p>
-            <a (click)="signUp()" class="nav-btn btn" routerLinkActive="active">GET STARTED HERE</a>
+            <a (click)="signUp()" class="nav-btn btn" routerLinkActive="active">GET STARTED HERE</a> 
+            <br> <br>
+            <a routerLink="/login" class="nav-btn btn"  routerLinkActive="active">Log In</a>
 
             </div>
             <div class="col l6 m6 s12">
@@ -42,6 +44,7 @@
 
   <main class="main">
       <div class="row">
+          
           <div class="col s12 center">
               <h2 class="heading-2">Why Choose Scrumy App?</h2>
               <p class="paragraph"> Some cool features that makes our app exceptional and the best for your team</p>
@@ -147,3 +150,11 @@
   </footer>
 
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, options);
+  });
+
+ </script>

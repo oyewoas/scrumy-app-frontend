@@ -45,8 +45,17 @@
                   <label for="password">Password</label>
                   <input id="loginpassword" name="loginpwd" [ngModelOptions]="{standalone: true}" [(ngModel)]="dataservice.loginpwd" placeholder="Password" type="password" class="input-field validate">
                 </div>
+
+                <div class="">
+                  <label for="project">Project Title</label>
+                  <input id="login_project" name="login_project" [ngModelOptions]="{standalone: true}" [(ngModel)]="dataservice.login_project" placeholder="Project Title" type="text" class="input-field validate">
+                </div>
                 <div class="center">
                     <button class="btn-submit btn">Login</button>
+                </div>
+
+                <div class="col s12 center">
+                  <a routerLink="/signup" routerLinkActive="active">Dont have an account? SignUp</a>
                 </div>
               </div>
           </form>

@@ -23,6 +23,8 @@ export class DataService {
     public loginpwd: string;
     public firstname: string;
     public roleid;
+    public project_name;
+    public login_project;
     public roles;
     public users;
     public goal_name;
@@ -51,13 +53,14 @@ export class DataService {
     this.message = 'Creating Account please wait...';
     this.http.post('http://' + this.domainname + '/ayooluwaoyewoscrumy/api/v1/scrumuser/', JSON.stringify({username: this.signupusername,
     password: this.signuppwd, confirmpassword: this.signupconfpwd,
-    fullname: this.fullname, role: this.role}), this.httpOptions).subscribe(
+    fullname: this.fullname, role: this.role, project_name: this.project_name}), this.httpOptions).subscribe(
         data => {
             this.message = data['message'];
             this.signupusername = '';
             this.signuppwd = '';
             this.signupconfpwd = '';
             this.role = '';
+            this.project_name = '';
             this.fullname = '';
         },
         err => {
@@ -68,6 +71,8 @@ export class DataService {
             this.signupconfpwd = '';
             this.fullname = '';
             this.role = '';
+            this.project_name = '';
+
         }
         
     );
@@ -77,13 +82,15 @@ export class DataService {
   toLogin()
   {
     this.http.post('http://' + this.domainname + '/ayooluwaoyewoscrumy/api-token-auth/', JSON.stringify({username: this.loginusername,
-    password: this.loginpwd }), this.httpOptions).subscribe(
+    password: this.loginpwd, project_name: this.login_project}), this.httpOptions).subscribe(
         data => {
 
             sessionStorage.setItem('username', this.loginusername);
             sessionStorage.setItem('role', data['role']);
             sessionStorage.setItem('token', data['token']);
             sessionStorage.setItem('message', data['message']);
+            sessionStorage.setItem('project_name', data['project_name']);
+
             this.username = this.loginusername;
             this.role = data['role'];
             this.roleid = data['id'];
@@ -92,6 +99,7 @@ export class DataService {
             this.router.navigate(['scrumboard']);
             this.loginusername = '';
             this.loginpwd = '';
+            this.login_project = '';
             this.message = data['message'];
 
             console.log(data);
@@ -108,6 +116,7 @@ export class DataService {
             console.error(err);
             this.loginusername = '';
             this.loginpwd = '';
+            this.login_project = '';
         }
     );
   }
@@ -192,6 +201,7 @@ changeOwner(from_id, to_id){
     this.authOptions = {};
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('role');
+    sessionStorage.removeItem('project_name');
     sessionStorage.removeItem('token');
 
   }

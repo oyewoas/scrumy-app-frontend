@@ -47,6 +47,7 @@
             <label for="fullname">Full Name</label>
             <input id="fullname" type="text" name="fullname" [ngModelOptions]="{standalone: true}" [(ngModel)]="dataservice.fullname" placeholder="Firstname Lastname"  class="input-field validate">
           </div>
+          
           <div class=" col s12">
               <label>User-type <i>(Choose your option)</i></label>
               <select class="input-field browser-default" name="role" [ngModelOptions]="{standalone: true}" [(ngModel)]="dataservice.role">
@@ -55,8 +56,16 @@
               </select>
             
             </div>
+            <div class="col s12" >
+              <label for="projname">Project Title</label>
+              
+              <input  [ngModelOptions]="{standalone: true}"  [(ngModel)]="dataservice.project_name" id="projname" name="projname" placeholder="Project Name" class="input-field validate">
+            </div>
             <div class=" col s12 center ">
                 <button class="btn-submit  btn">Sign Up</button>
+            </div>
+            <div class="col s12 center">
+              <a routerLink="/login" routerLinkActive="active">Already Signed Up? Login</a>
             </div>
         </div>
       </form>
