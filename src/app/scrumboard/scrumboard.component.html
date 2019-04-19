@@ -47,16 +47,17 @@
         
      </div>
      <ng-container *ngFor="let user of dataservice.users">
-       <div *ngIf="user.scrumygoals_set.length == 0 && user.project_name == dataservice.project_name" class="table-row" dragula="mainTable" [attr.id]="'u' + user.id">
+      <div *ngIf="user.scrumygoals_set.length == 0  " class="table-row" dragula="mainTable" [attr.id]="'u' + user.id">
           <td class="full-box" id="author" colspan="6">{{user.nickname}} - NO TASK FOR THIS USER</td>
        </div>
-       <div class="table-row" *ngFor="let goal of user.scrumygoals_set; let j = index; let k= count" dragula="mainTable" [attr.id]= "goal.goal_id">
-         <td *ngIf="j == 0" colspan="1" [attr.rowspan]="k" class="full-box" id="user">{{user.nickname}}</td>
+    
+       <div class="table-row" *ngFor="let goal of user.scrumygoals_set ; let j = index; let k= count" dragula="mainTable" [attr.id]= "goal.goal_id">
+         <td *ngIf="j == 0 " colspan="1" [attr.rowspan]="k" class="full-box" id="user">{{user.nickname}}</td>
          <div colspan="1" *ngFor="let arrItem of arrCount" [ngClass]="j == 0 ? 'top-box' : 'reg-box'" [innerText]="goal.goal_status == arrItem ? goal.goal_id + ') ' + goal.goal_name: '-----'" [attr.id]="goal.goal_status == arrItem ? arrItem : 'blank'"
          (click) = "goal.goal_status == arrItem ? editGoal($event) : doNothing()"></div>
          <div colspan="1" [ngClass] = "j == 0 ? 'top-box' : 'reg-box'" id="remove" >-----</div>
 
-       </div>
+      </div>
      </ng-container>
     </div> 
      

@@ -29,16 +29,27 @@ export class ScrumboardComponent implements OnInit {
   };
 
 
-    this.http.get('http://' + this.dataservice.domainname + '/ayooluwaoyewoscrumy/api/v1/scrumuser/', 
+    this.http.get('http://' + this.dataservice.domainname + '/ayooluwaoyewoscrumy/api/v1/scrumuser/',
     this.dataservice.httpOptions).subscribe(
         data => {
-            console.log(data);
+            // console.log(data);
+
             // tslint:disable-next-line:no-string-literal
             for (let i = 0; i < data['length']; i++) {
               data[i]['scrumygoals_set'] = data[i]['scrumygoals_set'].filter(item => item['visible']);
             }
-
-            this.dataservice.users = data;
+            
+            const listAllUsers = (inputArray) => {
+              if (!Array.isArray(inputArray)) return;
+              let allUsers;
+              allUsers = inputArray.filter(user => {
+                  return user.project_name === this.dataservice.project_name;
+              });
+              return allUsers;
+          };
+            this.dataservice.users = listAllUsers(data);
+            // this.dataservice.users = data;
+            console.log(this.dataservice.users);
         },
         err => {
            this.dataservice.message = 'Unexpected Error';

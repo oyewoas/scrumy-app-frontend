@@ -27,6 +27,7 @@ export class DataService {
     public login_project;
     public roles;
     public users;
+    public project;
     public goal_name;
     public goal_id;
     public to_id;
@@ -84,25 +85,33 @@ export class DataService {
     this.http.post('http://' + this.domainname + '/ayooluwaoyewoscrumy/api-token-auth/', JSON.stringify({username: this.loginusername,
     password: this.loginpwd, project_name: this.login_project}), this.httpOptions).subscribe(
         data => {
+          if (this.login_project !== data['project_name']){
+            this.router.navigate(['login']);
+            this.message = 'Incorrect Project Title';
+            this.loginusername = '';
+            this.login_project = '';
+            this.loginpwd = '';
 
+
+        } else {
             sessionStorage.setItem('username', this.loginusername);
             sessionStorage.setItem('role', data['role']);
             sessionStorage.setItem('token', data['token']);
             sessionStorage.setItem('message', data['message']);
             sessionStorage.setItem('project_name', data['project_name']);
-
             this.username = this.loginusername;
             this.role = data['role'];
             this.roleid = data['id'];
             this.fullname = data['nickname'];
-            this.users = data['data'];
+            this.users = data['users'];
             this.router.navigate(['scrumboard']);
             this.loginusername = '';
             this.loginpwd = '';
             this.login_project = '';
             this.message = data['message'];
+            
 
-            console.log(data);
+              console.log(data);}
 
             this.authOptions = {
               headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization': 'JWT' + data['token'] })
